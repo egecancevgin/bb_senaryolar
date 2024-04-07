@@ -1,6 +1,7 @@
 # bbklarim
 Benim Bulut Bilişimciler Senaryolarım
 
+``` sh
 $ ls -lah /etc/systemd/system
 
 $ systemctl list-units --type=service
@@ -11,6 +12,7 @@ $ sudo apt update
 $ sudo apt install nginx
 
 $ nano nginx.service
+
 [Unit]
 Description=Nginx HTTP Sunucusu
 After=network.target
@@ -46,3 +48,4 @@ $ journalctl -b
 
 $ journalctl -xe
 
+```

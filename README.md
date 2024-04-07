@@ -11,6 +11,8 @@ $ nano nginx.service
 
 $ sudo systemctl stop apache2 
 
+$ sudo systemctl daemon-reload
+
 $ sudo systemctl start nginx
 
 $ sudo systemctl restart prometheus

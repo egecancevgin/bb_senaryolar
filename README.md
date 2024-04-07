@@ -1,6 +1,8 @@
 # bbklarim
 Benim Bulut Bilişimciler Senaryolarım
 
+1- Systemd Servisleri
+
 ``` sh
 $ ls -lah /etc/systemd/system
 
@@ -49,3 +51,33 @@ $ journalctl -b
 $ journalctl -xe
 
 ```
+
+2- Makine Öğrenimi Temelleri
+
+Makine öğrenimi,
+
+Model nedir nasıl öğrenir
+
+Ağırlık nedir
+
+
+Aşamaları:
+ - Representation
+ - Evaluation
+ - Optimizasyon
+
+Makine nasıl öğrenir,
+
+Kayıp nedir,
+
+Kayıp / Zaman Grafiği, Learning Rate, Gradient Descent ve SGD
+
+Lineer Regresyon ve onun denklemi
+
+PEP8 ve temiz kodlama
+
+Veri temizleme ve elimizdeki verinin analizi,
+
+Metrikler
+
+Hiperparametre optimizasyonu

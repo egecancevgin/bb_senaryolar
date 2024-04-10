@@ -11,6 +11,15 @@ from sklearn.preprocessing import MinMaxScaler
 from bokeh.plotting import figure, show
 from bokeh.io import output_notebook
 
+"""
+  Kullanırken:
+    $ sudo apt update
+    $ sudo apt install python3-pip
+    $ sudo pip install pandas
+    # pip install scikit-learn
+    # pip install matplotlib
+    # pip install flask
+"""
 
 
 def veri_duzenle():

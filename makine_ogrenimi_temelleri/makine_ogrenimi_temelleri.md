@@ -18,8 +18,8 @@ Bağımsız değişkenler genellikle `X` ile temsil edilir. Modelin tahmin etmey
 
 Kayıp, makinenin tahmin ettiği değer ile gerçek değer arasındaki farktır ve bunu minimize etmek isteriz.
 Model, eğitim esnasında bağımsız değişken olan sütünlara ağırlık verir ve bu ağırlıklara göre desenleri öğrenir.
+Örneğin bir dondurma satışı verisinde mevsim ve mevcut sıcaklık sütunu çoğu zaman diğer sütunlardan daha önemli olacaktır.
 
-Örneğin bir dondurma satışı verisinde mevsim ve mevcut sıcaklık sütunu çoğu zaman diğer sütunlardan daha önemli olacaktır. Makine bu ağırlıkların yanına bir de ön yargı ekler ki bu ön yargı denilen kavram tahmin denkleminin x ekseninden uzaklığıdır.
 
 
 

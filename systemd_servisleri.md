@@ -26,3 +26,60 @@ Bazı flag'leri şunlardır:
 - `daemon-reload`, değişiklikleri yükler ve systemd daemon'u yeniden başlatır.
 
 `journalctl` komutu, systemd'nin günlük sistemiyle etkileşim kurmayı sağlar. Sistem günlükleri görüntülenebilr, filtrelenebilir, sorgulanabilir ve izlenebilir.
+
+Bazı flag'leri şunlardır:
+- `-b`, son sistem başlangıcından itibaren günlük girdilerini görüntüler.
+- `-e`, en son günlük girdileri görüntüler.
+- `-x`, çıktıyı genişletir ve daha detaylı anlatır.
+- `-u`, belirli bir servise ait günlük girdileri görüntüler.
+
+Şimdi senaryomuza geçelim, oluşturacağımız servis bir Nginx sunucusu. Nginx, esnek bir web sunucusu ve bir ters proxy sunucusudur. Popüler olarak web sitelerinin barındırılması ve yük dengeleme amacıyla kullanılır. 
+
+Öncelikle şu hedef dizininmize bir göz atalım ve ne var ne yok görelim:
+``` bash
+$ ls -lah /etc/systemd/system
+```
+
+Gördüğünüz üzere birçok servis ve konfigürasyon dosyası bulunmakta. Şimdi de sistemde aktif servisleri listelemek için `systemctl` komutunu bir deneyelim:
+``` bash
+$ systemctl list-units --type=service
+```
+
+Servisleri inceledikten sonra hedef dizinimize gidelim:
+``` bash
+$ cd /etc/systemd/system
+```
+
+Şimdi Nginx'i kurmak için apt aracımızı güncelleyelim ve hem Nginx, hem de metin editörü olan Nano yüklememizi gerçekleştirelim:
+``` sh
+$ sudo apt update
+$ sudo apt install nginx
+$ sudo apt install nano
+```
+
+İşlem tamamlandıktan sonra Nginx'in yüklenip yüklenmediğini versiyonunu sorarak kontrol edelim:
+``` sh
+$ nginx -v
+```
+
+Eğer yüklemelerde sorun yoksa ve çalıştığımız dizin `/etc/systemd/system` ise, sonunda `nginx.service` ismindeki servis dosyamızı oluşturmaya geçebiliriz:
+``` sh
+$ nano nginx.service
+```
+
+Bu komutu yazdıktan sonra çıkan ekrana öncelikle açıklamamızı, sistemin başlatılacağı yolu, ve kalan detayları yazıp kaydedip çıkalım: (Çoğu sistemde Ctrl X ve Y/E tuşlarına basarak)
+``` sh
+[Unit]
+Description=Nginx HTTP Sunucusu
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/nginx
+ExecReload=/usr/sbin/nginx -s reload
+ExecStop=/usr/sbin/nginx -s stop
+
+[Install]
+WantedBy=multi-user.target
+```
+

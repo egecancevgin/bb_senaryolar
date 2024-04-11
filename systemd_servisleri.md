@@ -13,4 +13,16 @@ Bu dosyalar içerisinde üç genel bölüm vardır:
 - `Service`: Servisin nasıl başlatılacağı, nasıl durdurulacağı, çalıştırılacak komut, bağımlılıklar ve ortam değişkenleri bu bölümdedir.
 - `Install`: Servisin hangi hedeflerle başlatılacağını belirtir, örneğin çok kullanıcılı şekilde.
 
+`systemctl` komutu, bu servislerin yönetimini sağlayan ana komuttur. Bu komuta çeşitli argümanlar ekleyerek servislerin durumu kontrol edilebilir, başlatılıp durdurulabilir, ve yenilenebilir.
+
+Bazı flag'leri şunlardır:
+- `start`, belirtilen servisi başlatmaya yarar.
+- `stop`, belirtilen servisi durdurmaya yarar.
+- `restart`, belirtilen servisi yeniden başlatır.
+- `status`, belirtilen servislerin durumunu gösterir.
+- `enable`, belirtilen servisin sistem başlangıcında otomatik başlatılmasını sağlar.
+- `disable`, belirtilen servisin otomatik başlatılmasını engeller.
+- `list-units`, tüm yüklenmiş birimleri listeler.
+- `daemon-reload`, değişiklikleri yükler ve systemd daemon'u yeniden başlatır.
+
 

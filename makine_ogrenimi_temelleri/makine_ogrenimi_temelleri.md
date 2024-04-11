@@ -11,6 +11,7 @@ Bu algoritmalar ve matematiksel tekniklerin bütününe model denir, ve modeli t
 
 Bu, sanki modeli cevaplarını bildiğimiz bir sınava sokmak gibidir. Örneğin elimizde 10 tane çözümlü sınav sorusu varsa biz 6 tane soruyu modele cevapları ile beraber öğretiriz. Kalan 4 soruyu da cevaplarını vermeden çözmesini bekleyebiliriz. Bu iki soru grubuna eğitim ve test seti adı verilir.
 
-![Eğitim-Test](egitim_test.png)
+<img src="egitim_test.png" width="200" height="300" alt="Egitim-Test">
+
 
 Bağımsız değişkenler genellikle `X` ile temsil edilir. Modelin tahmin etmeye çalıştığı değişkenlere de bağımlı değişken adı verilir ve bunlar `y` ile temsil edilir.

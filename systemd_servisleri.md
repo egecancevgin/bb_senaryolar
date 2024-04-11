@@ -25,4 +25,4 @@ Bazı flag'leri şunlardır:
 - `list-units`, tüm yüklenmiş birimleri listeler.
 - `daemon-reload`, değişiklikleri yükler ve systemd daemon'u yeniden başlatır.
 
-
+`journalctl` komutu, systemd'nin günlük sistemiyle etkileşim kurmayı sağlar. Sistem günlükleri görüntülenebilr, filtrelenebilir, sorgulanabilir ve izlenebilir.

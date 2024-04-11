@@ -83,3 +83,24 @@ ExecStop=/usr/sbin/nginx -s stop
 WantedBy=multi-user.target
 ```
 
+Şimdi servisimizi systemctl komutu ile başlatalım, önce daemon'u yenileyelim:
+``` sh
+$ sudo systemctl daemon-reload
+$ sudo systemctl start nginx
+```
+
+Şimdi de enable edelim, ki otomatik başlasın, sonra da artık statüsüne bakalım çalışıp çalışmadığı orada görünecektir:
+``` sh
+$ sudo systemctl enable nginx
+$ sudo systemctl status nginx
+```
+
+Sırada bu günlükleri detaylı bir biçimde incelemek var.
+`journalctl` komutunu kullanalım ve son dökümleri inceleyelim:
+``` sh
+$ journalctl -xe 
+```
+
+Bir sorun gözükmüyor ise servisimiz sağlıklı çalışıyor diyebiliriz. Bir sonraki senaryoda görüşmek üzere hoşçakalınn :)
+
+

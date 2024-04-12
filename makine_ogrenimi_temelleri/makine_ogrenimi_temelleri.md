@@ -56,7 +56,7 @@ pip install matplotlib
 
 Bunları hallettikten sonra proje dosyamızı oluşturalım. Terminale aşağıdaki komutu girelim:
 ``` sh
-touch araba_salınım.py
+touch araba_salinim.py
 ```
 
 

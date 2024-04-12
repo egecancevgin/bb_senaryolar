@@ -43,7 +43,7 @@ Bugünkü senaryoda yapacaklarımıza artık hazırız, makine öğrenimi projel
 
 PEP 8 standartlarına göre işlemlerimizi metotları ayırmalıyız ve bu metotların görevlerini ilk satırına kısaca özetlemeliyiz. Ayrıca çok fazla karakterlere sahip satırları da bölmeliyiz ki okumak daha kolay olsun.
 
-Bugünkü senaryomuzda bir araba veri setini kullanarak makineye arabaların karbondioksit salınımını tahmin ettireceğiz. Öncelikle gerekli modülleri terminalden indirmeliyiz ve yükleme aracımızı güncellemeliyiz. Aşağıdakileri komutları tek tek ve sırayla terminale girelim:
+Bugünkü senaryomuzda bir araba veri setini kullanarak makineye arabaların karbondioksit salınımını tahmin ettireceğiz. Öncelikle gerekli modülleri terminalden indirmeliyiz ve yükleme aracımızı güncellemeliyiz. Aşağıdakileri komutları tek tek ve sırayla terminale girelim ve yükleme esnasında bizden girdi isterse Y veya e harflerini girelim:
 ``` sh
 sudo apt update
 sudo apt install python3-pip

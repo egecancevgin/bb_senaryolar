@@ -53,6 +53,12 @@ pip install matplotlib
 pip install flask
 ```
 
+Bunları hallettikten sonra proje dosyamızı oluşturalım. Terminale aşağıdaki komutu girelim:
+``` sh
+touch araba_salınım.py
+```
+
+
 
 
 

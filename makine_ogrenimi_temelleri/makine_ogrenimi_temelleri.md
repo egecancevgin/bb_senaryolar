@@ -45,12 +45,12 @@ PEP 8 standartlarına göre işlemlerimizi metotları ayırmalıyız ve bu metot
 
 Bugünkü senaryomuzda bir araba veri setini kullanarak makineye arabaların karbondioksit salınımını tahmin ettireceğiz. Öncelikle gerekli modülleri terminalden indirmeliyiz ve yükleme aracımızı güncellemeliyiz. Aşağıdakileri komutları tek tek ve sırayla terminale girelim:
 ``` sh
-$ sudo apt update
-$ sudo apt install python3-pip
-$ pip install pandas
-$ pip install scikit-learn
-$ pip install matplotlib
-$ pip install flask
+sudo apt update
+sudo apt install python3-pip
+pip install pandas
+pip install scikit-learn
+pip install matplotlib
+pip install flask
 ```
 
 

@@ -59,19 +59,20 @@ def modeli_egit(df):
 
 
 def degerlendirme(model, X_train, X_test, y_train, y_test, X):
-  y_pred_train = model.predict(X_train)
+  #y_pred_train = model.predict(X_train)
   y_pred_test = model.predict(X_test)
-  mse_train = mean_squared_error(y_train, y_pred_train)
+  #mse_train = mean_squared_error(y_train, y_pred_train)
   mse_test = mean_squared_error(y_test, y_pred_test)
 
-  print('Eğitim seti MSE:', mse_train)
+  #print('Eğitim seti MSE:', mse_train)
   print('Test seti MSE:', mse_test)
 
+  """
   # Model katsayılarını yazdırma
   print('\nModel Katsayıları:')
   for feature, coef in zip(X.columns, model.coef_):
       print(f'{feature}: {coef}')
-
+  """
   return y_train, y_pred_train, y_test, y_pred_test
 
 """

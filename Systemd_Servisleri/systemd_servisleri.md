@@ -37,34 +37,34 @@ Bazı flag'leri şunlardır:
 
 Öncelikle şu hedef dizininmize bir göz atalım ve ne var ne yok görelim:
 ``` bash
-$ ls -lah /etc/systemd/system
+ls -lah /etc/systemd/system
 ```
 
 Gördüğünüz üzere birçok servis ve konfigürasyon dosyası bulunmakta. Şimdi de sistemde aktif servisleri listelemek için `systemctl` komutunu bir deneyelim:
 ``` bash
-$ systemctl list-units --type=service
+systemctl list-units --type=service
 ```
 
 Servisleri inceledikten sonra hedef dizinimize gidelim:
 ``` bash
-$ cd /etc/systemd/system
+cd /etc/systemd/system
 ```
 
 Şimdi Nginx'i kurmak için apt aracımızı güncelleyelim ve hem Nginx, hem de metin editörü olan Nano yüklememizi gerçekleştirelim:
 ``` sh
-$ sudo apt update
-$ sudo apt install nginx
-$ sudo apt install nano
+sudo apt update
+sudo apt install nginx
+sudo apt install nano
 ```
 
 İşlem tamamlandıktan sonra Nginx'in yüklenip yüklenmediğini versiyonunu sorarak kontrol edelim:
 ``` sh
-$ nginx -v
+nginx -v
 ```
 
 Eğer yüklemelerde sorun yoksa ve çalıştığımız dizin `/etc/systemd/system` ise, sonunda `nginx.service` ismindeki servis dosyamızı oluşturmaya geçebiliriz:
 ``` sh
-$ nano nginx.service
+nano nginx.service
 ```
 
 Bu komutu yazdıktan sonra çıkan ekrana öncelikle açıklamamızı, sistemin başlatılacağı yolu, ve kalan detayları yazıp kaydedip çıkalım: (Çoğu sistemde Ctrl X ve Y/E tuşlarına basarak)
@@ -85,20 +85,20 @@ WantedBy=multi-user.target
 
 Şimdi servisimizi systemctl komutu ile başlatalım, önce daemon'u yenileyelim:
 ``` sh
-$ sudo systemctl daemon-reload
-$ sudo systemctl start nginx
+sudo systemctl daemon-reload
+sudo systemctl start nginx
 ```
 
 Şimdi de enable edelim, ki otomatik başlasın, sonra da artık statüsüne bakalım çalışıp çalışmadığı orada görünecektir:
 ``` sh
-$ sudo systemctl enable nginx
-$ sudo systemctl status nginx
+sudo systemctl enable nginx
+sudo systemctl status nginx
 ```
 
 Sırada bu günlükleri detaylı bir biçimde incelemek var.
 `journalctl` komutunu kullanalım ve son dökümleri inceleyelim:
 ``` sh
-$ journalctl -xe 
+journalctl -xe 
 ```
 
 Bir sorun gözükmüyor ise servisimiz sağlıklı çalışıyor diyebiliriz. Bir sonraki senaryoda görüşmek üzere hoşçakalınn :)

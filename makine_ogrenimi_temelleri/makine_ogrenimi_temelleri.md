@@ -69,7 +69,6 @@ Ekranımızın sol yukarısındaki 'WORKSPACE' kısmının altında dosyamız ol
 ``` py
 import pandas as pd
 import numpy as np
-import seaborn as sns
 from matplotlib import pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
@@ -152,3 +151,9 @@ def main():
 main()
 ```
 
+Şimdi terminale şunları girerek kodu çalıştıralım:
+``` sh
+python3 araba_salinim.py
+```
+
+Çıktıları almış olmamız lazım, senaryomuz buraya kadar :)

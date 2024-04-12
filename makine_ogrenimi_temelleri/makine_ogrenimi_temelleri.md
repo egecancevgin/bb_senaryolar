@@ -32,7 +32,27 @@ Etiketli veri kullanılarak yapılan makine öğrenimine `denetimli makine öğr
 Lineer Regresyon algoritması, elimizdeki verilere en uygun doğruyu oluşturmaya çalışır. Böylece belirli özelliklere sahip verilerin gidişatını önceden tahmin edebiliriz. Mesela aşağıdaki grafikte kırmızı noktalar gerçek veri noktalarıyken mavi çizgi bizim tahmin ettiğimiz matematiksel lineer regresyon doğrusudur.
 ![Lineer-Reg](linreg.png)
 
-Lineer Regresyon denklemi şu şekildedir: 
+Lineer Regresyon denklemi şu şekildedir: `Y = β₀ + W₁X₁ + W₂X₂ + ... + WₙXₙ` burada W'lar ilgili sütunların ağırlıklarıyken, X'ler veri noktaları yani satırlardır, β₀ da denklemin x eksenine uzaklığıdır.
+
+Makine Öğrenimi üç ana aşamada incelenebilir: Temsil, Değerlendirme ve Optimizasyon. 
+  - Temsil aşamasında veri işlemesi ile matematiksel modelleme gerçekleştirilir ve modelin eğitildiği aşama burasıdır.
+  - Değerlendirme aşamasında modelin tahmin ve eğitim başarısı belirli metriklerle incelenir.
+  - Optimizasyon evresinde ise modelin eğitimini geliştirmek için uzun süreli iyileştirmeler yapılır.
+
+Bugünkü senaryoda yapacaklarımıza artık hazırız, makine öğrenimi projelerimizi PEP 8 standartlarına uygun bir şekilde yazmalıyız ki dağıtım aşamasında otomasyon testleri rahat yapılabilsin ve daha anlaşılır bir düzende yazmış olalım.
+
+PEP 8 standartlarına göre işlemlerimizi metotları ayırmalıyız ve bu metotların görevlerini ilk satırına kısaca özetlemeliyiz. Ayrıca çok fazla karakterlere sahip satırları da bölmeliyiz ki okumak daha kolay olsun.
+
+Bugünkü senaryomuzda bir araba veri setini kullanarak makineye arabaların karbondioksit salınımını tahmin ettireceğiz. Öncelikle gerekli modülleri terminalden indirmeliyiz ve yükleme aracımızı güncellemeliyiz. Aşağıdakileri komutları tek tek ve sırayla terminale girelim:
+``` sh
+$ sudo apt update
+$ sudo apt install python3-pip
+$ pip install pandas
+$ pip install scikit-learn
+$ pip install matplotlib
+$ pip install flask
+```
+
 
 
 

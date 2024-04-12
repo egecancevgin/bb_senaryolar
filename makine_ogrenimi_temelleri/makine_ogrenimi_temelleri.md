@@ -102,7 +102,7 @@ def veri_duzenle():
   return df
 ```
 
-Bu metot tamamlandıktan sonra bir modeli_egit() metodu oluşturacağız, bu aşamada önce bağımsız değişkenleri X değişkenine, bağımlı değişkeni y değişkenine eşitleyelim. Sonrasında da scikit-learn kütüphanesinin train_test_split() metodunu kullanarak X eğitim verisi, X test verisi, y eğitim verisi ve y test verisine %80-%20 olmak üzere bölelim.
+Bu metot tamamlandıktan sonra girdi olarak veri setini (df) alan bir modeli_egit() metodu oluşturacağız, bu aşamada önce bağımsız değişkenleri X değişkenine, bağımlı değişkeni y değişkenine eşitleyelim. Sonrasında da scikit-learn kütüphanesinin train_test_split() metodunu kullanarak X eğitim verisi, X test verisi, y eğitim verisi ve y test verisine %80-%20 olmak üzere bölelim.
 
 X eğitim ve y eğitim verileri eğitim aşamasında kullanılacak, X test ve y test verileri de test aşamasında kullanılacaktır. Bu örnekte %80 eğitim - %20 test olmak üzere veriyi böleceğiz.
 
@@ -130,4 +130,8 @@ def modeli_egit(df):
   model.fit(X_train, y_train)
   return model, X_train, X_test, y_train, y_test, X
 ```
+
+Sırada değerlendirme aşaması var, tahminimizi yapıp sonuçları değerlendireceğiz. Girdi olarak model, X_train, X_test, y_train, y_test ve X değişkenlerini alan bir degerlendirme() fonksiyonu olşturalım. Test setinin bağımlı değişkenlerini kullanarak tahmin yapalım. Sonrasında tahminimizin başarısını ölçmek için girdilerimizi scikit-learn'ün 'mean_squared_error' metodunu kullanalım.
+
+
 

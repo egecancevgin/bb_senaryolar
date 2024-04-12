@@ -74,7 +74,7 @@ def degerlendirme(model, X_train, X_test, y_train, y_test, X):
 
   return y_train, y_pred_train, y_test, y_pred_test
 
-
+"""
 def gorsellestir(y_train, y_pred_train, y_test, y_pred_test):
     min_len_train = min(len(y_train), len(y_pred_train), 700)
     min_len_test = min(len(y_test), len(y_pred_test), 700)
@@ -103,7 +103,7 @@ def gorsellestir(y_train, y_pred_train, y_test, y_pred_test):
     plt.ylabel('CO2 Emisyonları')
     plt.legend()
     plt.show()
-
+"""
 
 def main():
   df = veri_duzenle()

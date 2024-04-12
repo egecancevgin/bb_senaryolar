@@ -39,6 +39,12 @@ Makine Öğrenimi üç ana aşamada incelenebilir: Temsil, Değerlendirme ve Opt
   - Değerlendirme aşamasında modelin tahmin ve eğitim başarısı belirli metriklerle incelenir.
   - Optimizasyon evresinde ise modelin eğitimini geliştirmek için uzun süreli iyileştirmeler yapılır.
 
+Veri işlemesi, verimizin uygun formata getirilmesi için önemlidir. Örneğin bazı sütunlarda eksik veya yanlış değerler olabilir, bazı sütunlar numerik bazı sütunlar metin şeklinde olabilir, bazı sütunlarda 0-10000 arası değerler varken bazı sütunlarda 0-10 arası değerler olabilir.
+
+Öğrenme denkleminde bahsettiğimiz gibi her sütunun veri noktaları ağırlık değeriyle çarpılarak öğrenme yapılıyordu. Ancak bu sütunlar arasında veri noktaları aralığı uyuşmazlığı olursa makine yüksek değerli veri noktasının öğrenme esnasında daha çok önem arz edeceği sonucuna varabilir. Örneğin bir sütunda evin alanı 80 metrekare, bir sütunda evin yaşı 3 yaş ise denklemde evin alan değeri çok daha etkileyici olacaktır.
+
+Bu sorunu çözmek için sütunları ölçeklendirebiliriz. Örneğin Min-Max Ölçeklendirmede her bir değer, veri setindeki en küçük değere bölünerek ve ardından bu bölme sonucuna göre veri setindeki en büyük değere bölünerek yeniden ölçeklendirilir. 
+
 Bugünkü senaryoda yapacaklarımıza artık hazırız, makine öğrenimi projelerimizi PEP 8 standartlarına uygun bir şekilde yazmalıyız ki dağıtım aşamasında otomasyon testleri rahat yapılabilsin ve daha anlaşılır bir düzende yazmış olalım.
 
 PEP 8 standartlarına göre işlemlerimizi metotları ayırmalıyız ve bu metotların görevlerini ilk satırına kısaca özetlemeliyiz. Ayrıca çok fazla karakterlere sahip satırları da bölmeliyiz ki okumak daha kolay olsun.
@@ -59,7 +65,42 @@ Bunları hallettikten sonra proje dosyamızı oluşturalım. Terminale aşağıd
 touch araba_salinim.py
 ```
 
+Ekranımızın sol yukarısındaki 'WORKSPACE' kısmının altında dosyamız oluşturulmuş olacaktır. Bu dosyaya tıklayalım ve dosyanın en tepesine aşağıdaki kütüphane direktiflerini yazalım:
+``` py
+import pandas as pd
+import numpy as np
+import seaborn as sns
+from matplotlib import pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
+from sklearn.preprocessing import MinMaxScaler
+```
 
+Gerekli kütüphane çağrılarını yaptıktan sonra artık veri düzenleme fonksiyonumuzu oluşturabiliriz. Kütüphane direktiflerimizin iki satır aşağısına veri_duzenle() fonksiyonunu yazalım. 
 
+Bu fonksiyon içerisinde önce verimizin bulunduğu yeri kullanarak bu '.csv' uzantılı dosyayı Pandas DataFrame formatında okuyalım. Sonrasında NaN değerleri atalım ve indisleri resetleyelim. 
 
+Ölçeklendirme yapmayı unutmayalım ki eğitim düzgün gerçekleşsin. Motor hacmi, silindir sayısı, şehir içi ve şehir dışı benzin kullanımları sütunlarını ölçeklendirmeye dahil edelim. Sonrasında Scikit-learn kütüphanesinden kullanacağımız MinMaxScaler'ı scaler değişkenine eşitleyelim ve DataFrame'in bu dört sütununu 'fit_transform' metodu ile ölçeklendirelim.
+
+Son olarak veriye bir göz atmak için DataFrame.head() metodunu kullanalım. Metodumuz aşağıdaki gibi gözükmelidir, bu metot kütüphane direktiflerinin iki-üç satır aşağısında olmalıdır.
+
+``` python
+def veri_duzenle():
+  """ Veriyi temizleyip ölçeklendirir ve ekranda görüntüler, sonrasında da döner."""
+  url = "https://raw.githubusercontent.com/egecancevgin/bb_senaryolar/main/C02_emmissions.csv"
+  df = pd.read_csv(url)
+  df.dropna(inplace=True)
+  df.reset_index(drop=True, inplace=True)
+  features_to_scale = [
+      'Engine Size(L)', 'Cylinders', 'Fuel Consumption City (L/100 km)', 
+      'Fuel Consumption Hwy (L/100 km)'
+  ]
+  scaler = MinMaxScaler(feature_range=(1, 100))
+  df[features_to_scale] = scaler.fit_transform(df[features_to_scale])
+  print(df.head())
+  return df
+```
+
+Bu metod tamamlandıktan sonra 
 

@@ -133,5 +133,22 @@ def modeli_egit(df):
 
 Sırada değerlendirme aşaması var, tahminimizi yapıp sonuçları değerlendireceğiz. Girdi olarak model, X_train, X_test, y_train, y_test ve X değişkenlerini alan bir degerlendirme() fonksiyonu olşturalım. Test setinin bağımlı değişkenlerini kullanarak tahmin yapalım. Sonrasında tahminimizin başarısını ölçmek için girdilerimizi scikit-learn'ün 'mean_squared_error' metodunu kullanalım.
 
+Fonksiyon aşağıdaki gibi görünmelidir:
+``` python
+def degerlendirme(model, X_train, X_test, y_train, y_test, X):
+  """ Test verisiyle tahmin yapar ve MSE değerini ekrana basar."""
+  y_pred_test = model.predict(X_test)
+  mse_test = mean_squared_error(y_test, y_pred_test)
+  print('Test seti MSE:', mse_test)
+```
 
+Son olarak 'main()' fonksiyonumuzu oluşturalım ve çağıralım, şu şekilde olacaktır:
+``` python
+def main():
+  df = veri_duzenle()
+  model, xtr, xts, ytr, yts, X = modeli_egit(df)
+  degerlendirme(model, xtr, xts, ytr, yts, X)
+
+main()
+```
 

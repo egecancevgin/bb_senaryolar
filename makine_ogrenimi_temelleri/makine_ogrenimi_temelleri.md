@@ -32,7 +32,7 @@ Etiketli veri kullanılarak yapılan makine öğrenimine `denetimli makine öğr
 Lineer Regresyon algoritması, elimizdeki verilere en uygun doğruyu oluşturmaya çalışır. Böylece belirli özelliklere sahip verilerin gidişatını önceden tahmin edebiliriz. Mesela aşağıdaki grafikte kırmızı noktalar gerçek veri noktalarıyken mavi çizgi bizim tahmin ettiğimiz matematiksel lineer regresyon doğrusudur.
 ![Lineer-Reg](linreg.png)
 
-
+Lineer Regresyon denklemi şu şekildedir: 
 
 
 

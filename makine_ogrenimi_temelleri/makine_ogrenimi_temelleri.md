@@ -102,5 +102,32 @@ def veri_duzenle():
   return df
 ```
 
-Bu metod tamamlandıktan sonra 
+Bu metot tamamlandıktan sonra bir modeli_egit() metodu oluşturacağız, bu aşamada önce bağımsız değişkenleri X değişkenine, bağımlı değişkeni y değişkenine eşitleyelim. Sonrasında da scikit-learn kütüphanesinin train_test_split() metodunu kullanarak X eğitim verisi, X test verisi, y eğitim verisi ve y test verisine %80-%20 olmak üzere bölelim.
+
+X eğitim ve y eğitim verileri eğitim aşamasında kullanılacak, X test ve y test verileri de test aşamasında kullanılacaktır. Bu örnekte %80 eğitim - %20 test olmak üzere veriyi böleceğiz.
+
+Sonrasında scikit-learn kütüphanesinin `LinearRegression` metodunu kullanarak modelimizi oluşturacağız. Modeli eğitmek için 'X_train' ve y_train' eğitim verilerini girdi olarak verip '.fit()' metodu ile eğitimi gerçekleştirelim. Sonrasında da fonksiyonumuz hem modeli hem de bu böldüğümüz verileri dönsün.
+
+Sonuç olarak metodumuz bu şekilde gözükecektir ve önceki metottan 2-3 satır aşağıda olması gerekmektedir:
+``` python
+def modeli_egit(df):
+  """ Model eğitimini gerçekleştirir ve parçalanmış veriyle beraber eğitilmiş modeli döner."""
+  X = df[
+      [
+          'Engine Size(L)', 'Cylinders', 'Fuel Consumption City (L/100 km)',
+          'Fuel Consumption Hwy (L/100 km)'
+      ]
+  ]
+  y = df['CO2 Emissions(g/km)']
+
+  # Bashettiğimiz eğitim-test ayrımını yapalım
+  X_train, X_test, y_train, y_test = train_test_split(
+      X, y, test_size=0.2, random_state=42
+  )
+
+  # Model eğitimini gerçekleştirelim
+  model = LinearRegression()
+  model.fit(X_train, y_train)
+  return model, X_train, X_test, y_train, y_test, X
+```
 

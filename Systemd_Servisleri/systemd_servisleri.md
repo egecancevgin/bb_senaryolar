@@ -64,12 +64,7 @@ sudo apt install nano
 nginx -v
 ```
 
-Eğer yüklemelerde sorun yoksa ve çalıştığımız dizin `/etc/systemd/system` ise, sonunda `nginx.service` ismindeki servis dosyamızı oluşturmaya geçebiliriz:
-``` sh
-nano nginx.service
-```
-
-Bu komutu yazdıktan sonra çıkan ekrana öncelikle açıklamamızı, sistemin başlatılacağı yolu, ve kalan detayları yazıp kaydedip çıkalım: (Çoğu sistemde Ctrl X ve Y/E tuşlarına basarak)
+Eğer yüklemelerde sorun yoksa ve çalıştığımız dizin `/etc/systemd/system` ise, sonunda `nginx.service` ismindeki servis dosyamızı oluşturmaya geçebiliriz. Nano ile bu dosyayı açın ve çıkan ekrana öncelikle açıklamamızı, sistemin başlatılacağı yolu, ve kalan detayları yazıp kaydedip çıkalım:
 ``` sh
 [Unit]
 Description=Nginx HTTP Sunucusu
@@ -85,24 +80,13 @@ ExecStop=/usr/sbin/nginx -s stop
 WantedBy=multi-user.target
 ```
 
-Şimdi servisimizi systemctl komutu ile başlatalım, önce daemon'u yenileyelim:
-``` sh
-sudo systemctl daemon-reload
-sudo systemctl start nginx
-```
+Şimdi sıra sizde, servisimizi başlatmak için önce daemon'u yenileyelim. `start` flag'i ile servisi başlatalım.
 
-Şimdi de enable edelim, ki otomatik başlasın, sonra da artık statüsüne bakalım çalışıp çalışmadığı orada görünecektir:
-``` sh
-sudo systemctl enable nginx
-sudo systemctl status nginx
-```
+Sonrasında bu servisi enable edelim ki sistem her yeni başladığında otomatik olarak başlasın, son olarak `status` flag'i ile statüsüne bakalım, çalışıp çalışmadığı orada görünecektir.
 
-Sırada bu günlükleri detaylı bir biçimde incelemek var.
-`journalctl` komutunu kullanalım ve son dökümleri inceleyelim:
-``` sh
-journalctl -xe 
-```
+`journalctl` komutunu da kullanalım ve bu servise ait son dökümleri inceleyelim. 
 
-Bir sorun gözükmüyor ise servisimiz sağlıklı çalışıyor diyebiliriz. Bir sonraki senaryoda görüşmek üzere hoşçakalınn :)
+
+
 
 

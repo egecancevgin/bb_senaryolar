@@ -45,6 +45,8 @@ Veri işlemesi, verimizin uygun formata getirilmesi için önemlidir. Örneğin 
 
 Bu sorunu çözmek için sütunları ölçeklendirebiliriz. Örneğin Min-Max Ölçeklendirmede her bir değer, veri setindeki en küçük değere bölünerek ve ardından bu bölme sonucuna göre veri setindeki en büyük değere bölünerek yeniden ölçeklendirilir. 
 
+Kayıp fonksiyonu olarak da bu probleme en uygun olan `Mean Squared Error` olacaktır. Bu metrik veri setindeki gerçek değerlerle tahmin edilen değerleri arasındaki farkların karelerinin toplamı alınarak en sonunda ortalamalarının alınmasıdır. 
+
 Bugünkü senaryoda yapacaklarımıza artık hazırız, makine öğrenimi projelerimizi PEP 8 standartlarına uygun bir şekilde yazmalıyız ki dağıtım aşamasında otomasyon testleri rahat yapılabilsin ve daha anlaşılır bir düzende yazmış olalım.
 
 PEP 8 standartlarına göre işlemlerimizi metotları ayırmalıyız ve bu metotların görevlerini ilk satırına kısaca özetlemeliyiz. Ayrıca çok fazla karakterlere sahip satırları da bölmeliyiz ki okumak daha kolay olsun.

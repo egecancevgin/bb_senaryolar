@@ -1,6 +1,6 @@
 # Makine Öğrenimi Temelleri
 
-Makine Öğrenimi, bilgisayarların verilere bakarak öğrenmelerini ve yeni veriler üzerinde tahminler yapmalarını sağlayan teknolojidir.
+Makine Öğrenimi, bilgisayarların verilere bakarak öğrenmelerini ve bilmedikleri veriler üzerinde tahminler yapmalarını sağlayan teknolojidir.
 Örneğin bir fotoğraftaki köpeği tanımak ve sonraki fotoğraflarda köpek gördüğünde bunları tespit etmek için, bir metindeki duyguyu tahmin etmek için, bir banka işlemindeki sahtekarlığı tespit etmek için kullanılabilir.
 
 ![Obje-Tespiti](obje_tespiti.png)

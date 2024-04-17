@@ -98,8 +98,13 @@ def veri_duzenle():
       'Engine Size(L)', 'Cylinders', 'Fuel Consumption City (L/100 km)', 
       'Fuel Consumption Hwy (L/100 km)'
   ]
-  scaler = MinMaxScaler(feature_range=(1, 100))
-  df[features_to_scale] = scaler.fit_transform(df[features_to_scale])
+
+  # Ölçeklendirme işlemini siz gerçekleştireceksiniz, MinMaxScaler kullanın ve feature_range(1, 100) arasında verin:
+  scaler = ...
+
+  # Ölçeklendirme objesi olan scaler'ın, fit_transform metodunu çağırın ve argüman olarak 'df['features_to_scale'] verin:
+  df[features_to_scale] = ...
+
   print(df.head())
   return df
 ```
@@ -127,9 +132,9 @@ def modeli_egit(df):
       X, y, test_size=0.2, random_state=42
   )
 
-  # Model eğitimini gerçekleştirelim
-  model = LinearRegression()
-  model.fit(X_train, y_train)
+  # Model eğitimini gerçekleştirelim (Bu kısmı sizin yazmanız gerekiyor), 'LinearRegression' çağırın ve sonrasında model.fit() yapın:
+  model = ...
+  ...
   return model, X_train, X_test, y_train, y_test, X
 ```
 
@@ -140,7 +145,10 @@ Fonksiyon aşağıdaki gibi görünmelidir:
 def degerlendirme(model, X_train, X_test, y_train, y_test, X):
   """ Test verisiyle tahmin yapar ve MSE değerini ekrana basar."""
   y_pred_test = model.predict(X_test)
-  mse_test = mean_squared_error(y_test, y_pred_test)
+
+  # Test MSE değerini siz bulmalısınız, 'mean_squared_error' kullanın ve argüman olarak 'y_test' ile 'y_pred_test' verin:
+  mse_test = ...
+
   print('Test seti MSE:', mse_test)
 ```
 
@@ -159,4 +167,22 @@ main()
 python3 araba_salinim.py
 ```
 
-Çıktıları almış olmamız lazım, senaryomuz buraya kadar :)
+# Minik Scikit-learn ipuçları:
+
+1- Ölçeklendirme örnek olarak şu şekilde yapılır:
+``` python
+olcek = StandartScaler(feature_range=(1, 50))
+df[sutunlar] = olcek.fit_transform(df[sutunlar])
+```
+
+2- Model örnek olarak şu şekilde eğitilir:
+``` python
+model = LogisticRegression()
+model.fit(X_train, y_train)
+```
+
+3- Örnek olarak benzer bir kayıp fonksiyonu şu şekilde kullanılır:
+```
+mae_test = mean_absoulute_error(y_test, y_pred_test)
+```
+

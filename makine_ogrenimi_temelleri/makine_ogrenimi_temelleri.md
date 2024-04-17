@@ -1,4 +1,4 @@
-## Makine Öğrenimi Temelleri
+# Makine Öğrenimi Temelleri
 
 Makine Öğrenimi, bilgisayarların verilere bakarak öğrenmelerini ve yeni veriler üzerinde tahminler yapmalarını sağlayan teknolojidir.
 Örneğin bir fotoğraftaki köpeği tanımak ve sonraki fotoğraflarda köpek gördüğünde bunları tespit etmek için, bir metindeki duyguyu tahmin etmek için, bir banka işlemindeki sahtekarlığı tespit etmek için kullanılabilir.
@@ -178,7 +178,7 @@ Unutmayın, yukarıdaki tüm bu metotlar sırasıyla 'araba_salinim.py' dosyası
 python3 araba_salinim.py
 ```
 
-# Minik Scikit-learn İpuçları:
+### Minik Scikit-learn İpuçları:
 
 1- Ölçeklendirme örnek olarak şu şekilde yapılır:
 ``` python

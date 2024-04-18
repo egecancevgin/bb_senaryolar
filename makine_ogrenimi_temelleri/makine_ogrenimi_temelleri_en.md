@@ -80,7 +80,7 @@ In this function, let's first read this '.csv' extension file in DataFrame forma
 Let's not forget to scale so that the training takes place properly. Let's include the engine volume, number of cylinders, urban and extra-urban gasoline usage columns in the scaling. Afterwards, let's set MinMaxScaler, which we will use from the Scikit-learn library, equal to the scaler variable and scale these four columns of the DataFrame with the 'fit_transform' method:
 ``` python
 def veri_duzenle():
-  """ Veriyi temizleyip ölçeklendirir ve ekranda görüntüler, sonrasında da döner."""
+  """ It cleans and scales the data, displays it on the screen, and then rotates."""
   url = "https://raw.githubusercontent.com/egecancevgin/bb_senaryolar/main/C02_emmissions.csv"
   df = pd.read_csv(url)
   df.dropna(inplace=True)
@@ -90,12 +90,12 @@ def veri_duzenle():
       'Fuel Consumption Hwy (L/100 km)'
   ]
 
-  # Ölçeklendirme işlemini siz gerçekleştireceksiniz.
-  # MinMaxScaler kullanın ve feature_range(1, 100) arasında verin:
+  # You will perform the scaling process.
+  # Use MinMaxScaler and give between feature_range(1, 100):
   scaler = ...
 
-  # Ölçeklendirme objesi olan scaler'ın, fit_transform metodunu çağırın.
-  # Argüman olarak da 'df['features_to_scale'] verin:
+  # Call the fit_transform method of the scaling object, the scaler.
+  # Give 'df['features_to_scale'] as argument:
   df[features_to_scale] = ...
 
   print(df.head())

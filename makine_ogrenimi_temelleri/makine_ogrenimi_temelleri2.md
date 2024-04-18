@@ -160,3 +160,19 @@ python3 araba_salinim.py
 ```
 
 Çıktıları almış olmamız lazım, senaryomuz buraya kadar :)
+
+
+
+
+Makine Öğrenimine Giriş Lineer Reg
+Lojistik Reg
+Optimizasyon Hiperparametre
+SVM
+Karar Ağaçları
+Kümeleme ve Denetimsiz MÖ
+Yapay Sinir Ağları
+Derin Öğrenme
+NLP
+Cv, görüntü işleme
+RecSys
+Reinforcement Learning

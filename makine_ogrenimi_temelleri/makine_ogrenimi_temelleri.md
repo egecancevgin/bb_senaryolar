@@ -149,8 +149,8 @@ def main():
   model, xtr, xts, ytr, yts, X = modeli_egit(df)
   cikti = degerlendirme(model, xtr, xts, ytr, yts, X)
 
- with open("cikti.txt", "w") as dosya:
-    dosya.write(str(cikti))
+  with open("cikti.txt", "w") as dosya:
+    dosya.write(str(int(cikti)))
 
 main()
 ```

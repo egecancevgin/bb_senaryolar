@@ -45,3 +45,135 @@ As a loss function, the most suitable one for this problem will be 'Mean Squared
 In addition, we must write all our machine learning projects in accordance with PEP 8 standards so that automation tests can be carried out easily during the deployment phase and we can write them in a more understandable order.
 
 In today's scenario, we will use a car data set to have the machine predict the carbon dioxide emissions of cars. First we need to download the necessary modules from the terminal and update our installation tool:
+``` sh
+sudo apt update
+sudo apt install python3-pip
+pip install pandas
+pip install scikit-learn
+pip install matplotlib
+```
+
+Let's create our project file:
+``` sh
+touch araba_salinim.py
+```
+
+Our file will be created under the 'WORKSPACE' section at the top left of our screen. Let's click on this file and write the following directives at the top of the file:
+``` py
+import pandas as pd
+import numpy as np
+from matplotlib import pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
+from sklearn.preprocessing import MinMaxScaler
+```
+
+After making the necessary library calls, we can now create our data editing function. Let's write the 'data_edit()' function two lines below our library directives.
+
+In this function, let's first read this '.csv' extension file in DataFrame format using the location where our data is located. Afterwards, let's assign NaN values and reset the indices.
+
+Let's not forget to scale so that the training takes place properly. Let's include the engine volume, number of cylinders, urban and extra-urban gasoline usage columns in the scaling. Afterwards, let's set MinMaxScaler, which we will use from the Scikit-learn library, equal to the scaler variable and scale these four columns of the DataFrame with the 'fit_transform' method:
+``` python
+def veri_duzenle():
+  """ Veriyi temizleyip ölçeklendirir ve ekranda görüntüler, sonrasında da döner."""
+  url = "https://raw.githubusercontent.com/egecancevgin/bb_senaryolar/main/C02_emmissions.csv"
+  df = pd.read_csv(url)
+  df.dropna(inplace=True)
+  df.reset_index(drop=True, inplace=True)
+  features_to_scale = [
+      'Engine Size(L)', 'Cylinders', 'Fuel Consumption City (L/100 km)', 
+      'Fuel Consumption Hwy (L/100 km)'
+  ]
+
+  # Ölçeklendirme işlemini siz gerçekleştireceksiniz.
+  # MinMaxScaler kullanın ve feature_range(1, 100) arasında verin:
+  scaler = ...
+
+  # Ölçeklendirme objesi olan scaler'ın, fit_transform metodunu çağırın.
+  # Argüman olarak da 'df['features_to_scale'] verin:
+  df[features_to_scale] = ...
+
+  print(df.head())
+  return df
+```
+
+After this method is completed, we will create a model_egit() method that takes the data set (df) as input. At this stage, let's first set the independent variables equal to the X variable and the dependent variable to the y variable. Then, let's divide it by 4 using the train_test_split() method of the scikit-learn library.
+
+X training and y training data will be used in the training phase, and X test and y test data will be used in the testing phase. In this example, we will split the data as 80% training - 20% testing.
+
+Afterwards, we will create our model using the 'LinearRegression' class of the 'scikit-learn' library. To train the model, let's give 'X_train' and y_train' training data as input and perform the training with the '.fit()' method. Then return the model and data:
+``` python
+def modeli_egit(df):
+  """ Model eğitimini gerçekleştirir ve parçalanmış veriyle beraber eğitilmiş modeli döner."""
+  X = df[
+      [
+          'Engine Size(L)', 'Cylinders', 'Fuel Consumption City (L/100 km)',
+          'Fuel Consumption Hwy (L/100 km)'
+      ]
+  ]
+  y = df['CO2 Emissions(g/km)']
+
+  # Bashettiğimiz eğitim-test ayrımını yapalım
+  X_train, X_test, y_train, y_test = train_test_split(
+      X, y, test_size=0.2, random_state=42
+  )
+
+  # Model eğitimini siz gerçekleştirin.
+  # 'LinearRegression' çağırın ve sonrasında model.fit() yapın:
+  model = ...
+  ...
+
+  return model, X_train, X_test, y_train, y_test, X
+```
+
+Next is the evaluation phase, we will make our prediction and evaluate the results. Let's create an 'evaluate()' function that takes six parameters as input. Let's make a prediction using the dependent variables of the test set. Then, to measure the success of our prediction, let's use scikit-learn's 'mean_squared_error' method for our inputs and return the output:
+``` python
+def degerlendirme(model, X_train, X_test, y_train, y_test, X):
+  """ Test verisiyle tahmin yapar ve MSE değerini ekrana basar ve döner."""
+  y_pred_test = model.predict(X_test)
+
+  # Test MSE değerini siz bulmalısınız, 'mean_squared_error' kullanın.
+  # Argüman olarak da 'y_test' ile 'y_pred_test' verin:
+  mse_test = ...
+
+  print('Test seti MSE:', mse_test)
+  return mse_test
+```
+
+Finally, let's create and call our 'main()' function. At the end of the method, let's write the 'evaluation' function output to a file:
+``` python
+def main():
+  df = veri_duzenle()
+  model, xtr, xts, ytr, yts, X = modeli_egit(df)
+  cikti = degerlendirme(model, xtr, xts, ytr, yts, X)
+
+  with open("cikti.txt", "w") as dosya:
+    dosya.write(str(int(cikti)))
+
+main()
+```
+
+Now let's run the code from the terminal. If the MSE value is around 200, we can say that the process is complete:
+``` sh
+python3 araba_salinim.py
+```
+
+### Tiny Scikit-learn Tips:
+1- Scaling is done as follows, for example:
+``` python
+olcek = StandartScaler(feature_range=(1, 50))
+df[sutunlar] = olcek.fit_transform(df[sutunlar])
+```
+
+2- The model is trained as follows:
+``` python
+model = LogisticRegression()
+model.fit(X_train, y_train)
+```
+
+3- For example, a similar loss function is used as follows:
+``` python
+mae_test = mean_absoulute_error(y_test, y_pred_test)
+```
+

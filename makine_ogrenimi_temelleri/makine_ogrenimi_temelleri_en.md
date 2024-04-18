@@ -2,6 +2,7 @@
 
 Machine Learning is the technology that allows computers to learn by looking at data and make predictions on data they do not know.
 For example, it can be used to recognize a dog in a photo and spot it when dogs are seen in subsequent photos, to predict emotion in a text, to detect fraud in a bank transaction.
+
 ![Object-Detection](https://raw.githubusercontent.com/egecancevgin/bb_senaryolar/main/makine_ogrenimi_temelleri/obje_tespiti.png)
 
 
@@ -10,12 +11,14 @@ When machines learn, the data they receive as input are called independent varia
 All of these algorithms and mathematical techniques are called models, and we need to train the model to make predictions. After training the model with some of the data, we need to test some of it.
 
 It's like putting the model to a test to which we know the answers. For example, if we have 10 solved exam questions, we teach 6 questions to the model with their answers. We can expect him to solve the remaining 4 questions without giving answers. These two sets of questions are called training and test sets.
+
 ![Egitim-Test](https://raw.githubusercontent.com/egecancevgin/bb_senaryolar/main/makine_ogrenimi_temelleri/egitim_tst.png)
 
 
 Independent variables are usually represented by 'X'. The variables that the model tries to predict are called dependent variables and are represented by 'y'.
 
 'Loss' is the difference between the value predicted by the machine and the actual value, and we want to minimize this. For example, in the image below, the yellow circles represent the actual data points, the blue line represents our prediction, and the red arrows represent the loss.
+
 ![Kayıp](https://raw.githubusercontent.com/egecancevgin/bb_senaryolar/main/makine_ogrenimi_temelleri/kayıp.png)
 
 
@@ -27,6 +30,7 @@ The label is the dependent variable data for which we know the answer. For examp
 Machine learning done using labeled data is called 'Supervised Machine Learning'. The most basic algorithm of supervised machine learning is 'Linear Regression'.
 
 The Linear Regression algorithm tries to create the line that best fits the data we have. In this way, we can predict the course of data with certain characteristics. For example, in the graph below, the red dots are the actual data points, while the blue line is our estimated mathematical linear regression line.
+
 ![Lineer-Reg](https://raw.githubusercontent.com/egecancevgin/bb_senaryolar/main/makine_ogrenimi_temelleri/linreg.png)
 
 

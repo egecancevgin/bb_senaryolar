@@ -109,7 +109,7 @@ X training and y training data will be used in the training phase, and X test an
 Afterwards, we will create our model using the 'LinearRegression' class of the 'scikit-learn' library. To train the model, let's give 'X_train' and y_train' training data as input and perform the training with the '.fit()' method. Then return the model and data:
 ``` python
 def modeli_egit(df):
-  """ Model eğitimini gerçekleştirir ve parçalanmış veriyle beraber eğitilmiş modeli döner."""
+  """ It performs model training and returns the trained model with the fragmented data."""
   X = df[
       [
           'Engine Size(L)', 'Cylinders', 'Fuel Consumption City (L/100 km)',
@@ -118,13 +118,13 @@ def modeli_egit(df):
   ]
   y = df['CO2 Emissions(g/km)']
 
-  # Bashettiğimiz eğitim-test ayrımını yapalım
+  # Let's make the training-test distinction we mentioned.
   X_train, X_test, y_train, y_test = train_test_split(
       X, y, test_size=0.2, random_state=42
   )
 
-  # Model eğitimini siz gerçekleştirin.
-  # 'LinearRegression' çağırın ve sonrasında model.fit() yapın:
+  # You do the model training.
+  # Call 'LinearRegression' and then do model.fit():
   model = ...
   ...
 
@@ -134,14 +134,14 @@ def modeli_egit(df):
 Next is the evaluation phase, we will make our prediction and evaluate the results. Let's create an 'evaluate()' function that takes six parameters as input. Let's make a prediction using the dependent variables of the test set. Then, to measure the success of our prediction, let's use scikit-learn's 'mean_squared_error' method for our inputs and return the output:
 ``` python
 def degerlendirme(model, X_train, X_test, y_train, y_test, X):
-  """ Test verisiyle tahmin yapar ve MSE değerini ekrana basar ve döner."""
+  """ It makes a prediction with the test data and prints the MSE value on the screen and returns."""
   y_pred_test = model.predict(X_test)
 
-  # Test MSE değerini siz bulmalısınız, 'mean_squared_error' kullanın.
-  # Argüman olarak da 'y_test' ile 'y_pred_test' verin:
+  # You must find the test MSE value, use 'mean_squared_error'.
+  # Give 'y_pred_test' with 'y_test' as arguments:
   mse_test = ...
 
-  print('Test seti MSE:', mse_test)
+  print('Test set MSE:', mse_test)
   return mse_test
 ```
 

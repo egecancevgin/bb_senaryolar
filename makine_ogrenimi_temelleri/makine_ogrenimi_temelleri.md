@@ -1,4 +1,4 @@
-# Makine Öğrenimi Temelleri
+# Problem - Makine Öğrenimi Temelleri
 
 Makine Öğrenimi, bilgisayarların verilere bakarak öğrenmelerini ve bilmedikleri veriler üzerinde tahminler yapmalarını sağlayan teknolojidir.
 Örneğin bir fotoğraftaki köpeği tanımak ve sonraki fotoğraflarda köpek gördüğünde bunları tespit etmek için, bir metindeki duyguyu tahmin etmek için, bir banka işlemindeki sahtekarlığı tespit etmek için kullanılabilir.
@@ -182,6 +182,6 @@ model.fit(X_train, y_train)
 ```
 
 3- Örnek olarak benzer bir kayıp fonksiyonu şu şekilde kullanılır:
-```
+``` python
 mae_test = mean_absoulute_error(y_test, y_pred_test)
 ```

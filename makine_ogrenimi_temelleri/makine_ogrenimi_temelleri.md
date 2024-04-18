@@ -25,8 +25,6 @@ Model, eğitim esnasında bağımsız değişken olan sütünlara ağırlık ver
 
 Etiket, cevabını bildiğimiz bağımlı değişken veridir. Örneğin bir mail verisinde bulunan bazı maillerin spam olduğunu biliyoruz. Mailin spam olduğunu belirten sütuna etiket denir ve makine bu etiketi eğitim için kullanır.
 
-Ancak her veride önceden etiketlenmiş veri olmayabilir, bu durumda da çalışan bazı algoritmalar vardır. Örneğin kümeleme algoritması etiketli veriye ihtiyaç duymasa da benzer verileri gruplandırıp bu şekilde tahminler gerçekleştirebilir.
-
 Etiketli veri kullanılarak yapılan makine öğrenimine 'Denetimli Makine Öğrenimi' denir. Denetimli makine öğrenimin en temel algoritması 'Lineer Regresyon'dur.
 
 Lineer Regresyon algoritması, elimizdeki verilere en uygun doğruyu oluşturmaya çalışır. Böylece belirli özelliklere sahip verilerin gidişatını önceden tahmin edebiliriz. Mesela aşağıdaki grafikte kırmızı noktalar gerçek veri noktalarıyken mavi çizgi bizim tahmin ettiğimiz matematiksel lineer regresyon doğrusudur.
@@ -34,25 +32,20 @@ Lineer Regresyon algoritması, elimizdeki verilere en uygun doğruyu oluşturmay
 
 Lineer Regresyon denklemi şu şekildedir: 'Y = β₀ + W₁X₁ + W₂X₂ + ... + WₙXₙ' burada W'lar ilgili sütunların ağırlıklarıyken, X'ler veri noktaları yani satırlardır, β₀ da denklemin x eksenine uzaklığıdır.
 
-Makine Öğrenimi üç ana aşamada incelenebilir: Temsil, Değerlendirme ve Optimizasyon. 
-  - Temsil aşamasında veri işlemesi ile matematiksel modelleme gerçekleştirilir ve modelin eğitildiği aşama burasıdır.
-  - Değerlendirme aşamasında modelin tahmin ve eğitim başarısı belirli metriklerle incelenir.
-  - Optimizasyon evresinde ise modelin eğitimini geliştirmek için uzun süreli iyileştirmeler yapılır.
+Makine Öğrenimi üç ana aşamada incelenebilir: Temsil, Değerlendirme ve Optimizasyon. Temsil aşamasında veri işlemesi ile matematiksel modelleme gerçekleştirilir ve modelin eğitildiği aşama burasıdır. Değerlendirme aşamasında modelin tahmin ve eğitim başarısı incelenir Optimizasyon evresinde ise modelin eğitimini geliştirmek için iyileştirmeler yapılır.
 
 Veri işlemesi, verimizin uygun formata getirilmesi için önemlidir. Örneğin bazı sütunlarda eksik veya yanlış değerler olabilir, bazı sütunlar numerik bazı sütunlar metin şeklinde olabilir, bazı sütunlarda 0-10000 arası değerler varken bazı sütunlarda 0-10 arası değerler olabilir.
 
-Öğrenme denkleminde bahsettiğimiz gibi her sütunun veri noktaları ağırlık değeriyle çarpılarak öğrenme yapılıyordu. Ancak bu sütunlar arasında veri noktaları aralığı uyuşmazlığı olursa makine yüksek değerli veri noktasının öğrenme esnasında daha çok önem arz edeceği sonucuna varabilir. Örneğin bir sütunda evin alanı 80 metrekare, bir sütunda evin yaşı 3 yaş ise denklemde evin alan değeri çok daha etkileyici olacaktır.
+Öğrenme denkleminde bahsettiğimiz gibi her sütunun veri noktaları ağırlık değeriyle çarpılarak öğrenme yapılıyordu. Ancak bu sütunlar arasında veri noktaları aralığı uyuşmazlığı olursa makine yüksek değerli veri noktasının öğrenme esnasında daha çok önem arz edeceği sonucuna varabilir. Örneğin bir sütunda evin alanı 150 metrekare, bir sütunda evin yaşı 3 yaş ise denklemde evin alan değeri çok daha etkileyici olacaktır.
 
 Bu sorunu çözmek için sütunları ölçeklendirebiliriz. Örneğin Min-Max Ölçeklendirmede her bir değer, veri setindeki en küçük değere bölünerek ve ardından bu bölme sonucuna göre veri setindeki en büyük değere bölünerek yeniden ölçeklendirilir. 
 
 Kayıp fonksiyonu olarak da bu probleme en uygun olan 'Mean Squared Error' olacaktır. Bu metrik veri setindeki gerçek değerlerle tahmin edilen değerleri arasındaki farkların karelerinin toplamını alır ve sonrasında tüm bu terimlerin ortalamasını alır.
 ![MSE](https://raw.githubusercontent.com/egecancevgin/bb_senaryolar/main/makine_ogrenimi_temelleri/mse.png)
 
-Bugünkü senaryoda yapacaklarımıza artık hazırız, makine öğrenimi projelerimizi PEP 8 standartlarına uygun bir şekilde yazmalıyız ki dağıtım aşamasında otomasyon testleri rahat yapılabilsin ve daha anlaşılır bir düzende yazmış olalım.
+Ayrıca tüm makine öğrenimi projelerimizi PEP 8 standartlarına uygun bir şekilde yazmalıyız ki dağıtım aşamasında otomasyon testleri rahat yapılabilsin ve daha anlaşılır bir düzende yazmış olalım.
 
-Bugünkü senaryomuzda bir araba veri setini kullanarak makineye arabaların karbondioksit salınımını tahmin ettireceğiz. Öncelikle gerekli modülleri terminalden indirmeliyiz ve yükleme aracımızı güncellemeliyiz. 
-
-Aşağıdakileri tek tek ve sırayla terminale girelim:
+Bugünkü senaryomuzda bir araba veri setini kullanarak makineye arabaların karbondioksit salınımını tahmin ettireceğiz. Öncelikle gerekli modülleri terminalden indirmeliyiz ve yükleme aracımızı güncellemeliyiz:
 ``` sh
 sudo apt update
 sudo apt install python3-pip
@@ -61,7 +54,7 @@ pip install scikit-learn
 pip install matplotlib
 ```
 
-Bunları hallettikten sonra proje dosyamızı oluşturalım:
+Proje dosyamızı oluşturalım:
 ``` sh
 touch araba_salinim.py
 ```
@@ -79,7 +72,7 @@ from sklearn.preprocessing import MinMaxScaler
 
 Gerekli kütüphane çağrılarını yaptıktan sonra artık veri düzenleme fonksiyonumuzu oluşturabiliriz. Kütüphane direktiflerimizin iki satır aşağısına 'veri_duzenle()' fonksiyonunu yazalım. 
 
-Bu fonksiyon içerisinde önce verimizin bulunduğu yeri kullanarak bu '.csv' uzantılı dosyayı Pandas DataFrame formatında okuyalım. Sonrasında NaN değerleri atalım ve indisleri resetleyelim. 
+Bu fonksiyon içerisinde önce verimizin bulunduğu yeri kullanarak bu '.csv' uzantılı dosyayı DataFrame formatında okuyalım. Sonrasında NaN değerleri atalım ve indisleri resetleyelim. 
 
 Ölçeklendirme yapmayı unutmayalım ki eğitim düzgün gerçekleşsin. Motor hacmi, silindir sayısı, şehir içi ve şehir dışı benzin kullanımları sütunlarını ölçeklendirmeye dahil edelim. Sonrasında Scikit-learn kütüphanesinden kullanacağımız MinMaxScaler'ı scaler değişkenine eşitleyelim ve DataFrame'in bu dört sütununu 'fit_transform' metodu ile ölçeklendirelim:
 ``` python
@@ -106,11 +99,11 @@ def veri_duzenle():
   return df
 ```
 
-Bu metot tamamlandıktan sonra girdi olarak veri setini (df) alan bir modeli_egit() metodu oluşturacağız, bu aşamada önce bağımsız değişkenleri X değişkenine, bağımlı değişkeni y değişkenine eşitleyelim. Sonrasında da scikit-learn kütüphanesinin train_test_split() metodunu kullanarak X eğitim verisi, X test verisi, y eğitim verisi ve y test verisine bölelim.
+Bu metot tamamlandıktan sonra girdi olarak veri setini (df) alan bir modeli_egit() metodu oluşturacağız, bu aşamada önce bağımsız değişkenleri X değişkenine, bağımlı değişkeni y değişkenine eşitleyelim. Sonrasında da scikit-learn kütüphanesinin train_test_split() metodunu kullanarak 4'e bölelim
 
 X eğitim ve y eğitim verileri eğitim aşamasında kullanılacak, X test ve y test verileri de test aşamasında kullanılacaktır. Bu örnekte %80 eğitim - %20 test olmak üzere veriyi böleceğiz.
 
-Sonrasında 'scikit-learn' kütüphanesinin 'LinearRegression' sınıfını kullanarak modelimizi oluşturacağız. Modeli eğitmek için 'X_train' ve y_train' eğitim verilerini girdi olarak verip '.fit()' metodu ile eğitimi gerçekleştirelim. Sonrasında da fonksiyonumuz hem modeli hem de bu böldüğümüz verileri dönsün:
+Sonrasında 'scikit-learn' kütüphanesinin 'LinearRegression' sınıfını kullanarak modelimizi oluşturacağız. Modeli eğitmek için 'X_train' ve y_train' eğitim verilerini girdi olarak verip '.fit()' metodu ile eğitimi gerçekleştirelim. Sonrasında da modeli ve verileri dönsün:
 ``` python
 def modeli_egit(df):
   """ Model eğitimini gerçekleştirir ve parçalanmış veriyle beraber eğitilmiş modeli döner."""
@@ -135,7 +128,7 @@ def modeli_egit(df):
   return model, X_train, X_test, y_train, y_test, X
 ```
 
-Sırada değerlendirme aşaması var, tahminimizi yapıp sonuçları değerlendireceğiz. Girdi olarak model, X_train, X_test, y_train, y_test ve X değişkenlerini alan bir 'degerlendirme()' fonksiyonu olşturalım. Test setinin bağımlı değişkenlerini kullanarak tahmin yapalım. Sonrasında tahminimizin başarısını ölçmek için girdilerimizi scikit-learn'ün 'mean_squared_error' metodunu kullanalım, çıktıyı da dönelim:
+Sırada değerlendirme aşaması var, tahminimizi yapıp sonuçları değerlendireceğiz. Girdi olarak altı parametre alan bir 'degerlendirme()' fonksiyonu olşturalım. Test setinin bağımlı değişkenlerini kullanarak tahmin yapalım. Sonrasında tahminimizin başarısını ölçmek için girdilerimizi scikit-learn'ün 'mean_squared_error' metodunu kullanalım, çıktıyı da dönelim:
 ``` python
 def degerlendirme(model, X_train, X_test, y_train, y_test, X):
   """ Test verisiyle tahmin yapar ve MSE değerini ekrana basar ve döner."""
